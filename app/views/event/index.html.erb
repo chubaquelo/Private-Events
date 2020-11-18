@@ -1,7 +1,28 @@
-<h1>this are all the events</h1>
+<h1>This are all the events</h1>
 <% @events.each do |events| %>
   <li>
     <%= events.location %>
     <%= events.datetime %>
   </li>
 <% end %>
+
+<h3>Past events:</h3>
+ <ul>
+  <% @events.past.each do |event| %>
+      <li>
+        <%= event.location %>
+        <%= event.datetime %>
+      </li>
+  <% end %>
+</ul> 
+
+
+<h3>Next events:</h3>
+ <ul>
+  <% @events.future.each do |event| %>
+      <li>
+        <%= event.location %>
+        <%= event.datetime %>
+      </li>
+  <% end %>
+</ul> 

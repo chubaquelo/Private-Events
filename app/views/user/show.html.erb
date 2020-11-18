@@ -9,12 +9,27 @@
   <% end %>
 </ul>
 
-<h3>Events <%= @user.name %> is going to attend:</h3>
+<h3><%= @user.name %>'s previous attended events:</h3>
  <ul>
   <% @user.attended_events.each do |event| %>
-    <li>
-      <%= event.location %>
-      <%= event.datetime %>
-    </li>
+    <% if event.datetime < Time.zone.now %>
+      <li>
+        <%= event.location %>
+        <%= event.datetime %>
+      </li>
+    <% end %>
+  <% end %>
+</ul> 
+
+
+<h3><%= @user.name %>'s next events:</h3>
+ <ul>
+  <% @user.attended_events.each do |event| %>
+    <% if event.datetime > Time.zone.now %>
+      <li>
+        <%= event.location %>
+        <%= event.datetime %>
+      </li>
+    <% end %>
   <% end %>
 </ul> 
