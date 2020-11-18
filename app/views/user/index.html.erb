@@ -1,3 +1,5 @@
-<h1>Welcome</h1>
-<p>user</p>
-<%= User.find(session[:user_id]).name %>
+<% unless session[:user_id].nil? %>
+  <h1>Welcome <%= current_user.name %></h1>
+<% else %>
+  <h1> Not SIGNED IN </h1>
+<% end %>

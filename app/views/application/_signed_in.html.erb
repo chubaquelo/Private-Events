@@ -1,0 +1,6 @@
+<% unless session[:user_id].nil? %>
+  <p>SIGNED as <%= current_user.name %> </p>
+  <%= link_to 'Log out', session_path(session[:user_id]), method: :delete %>
+<% else %>
+  <p> Not SIGNED IN </p>
+<% end %>
