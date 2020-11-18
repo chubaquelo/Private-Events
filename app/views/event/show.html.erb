@@ -1,0 +1,7 @@
+<h1>list of events</h1>
+<p>this are the events of <%= current_user.name %></p>
+<ul>
+  <% @event.each do |event| %>
+    <li><%= event.location %></li>
+  <% end %>
+</ul>

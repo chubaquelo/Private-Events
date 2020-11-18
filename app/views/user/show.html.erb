@@ -1,1 +1,9 @@
 <h1>User Name is: <%= @user.name %></h1>
+<ul>
+  <% @user.authored_events.each do |ue| %>
+    <li>
+      <%= ue.location %>
+      <%= ue.datetime %>
+    </li>
+  <% end %>
+</ul>

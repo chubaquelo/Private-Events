@@ -1,0 +1,7 @@
+<%= form_with model: @event, url: event_index_path do |f| %>
+  <%= label_tag(:location, "Input a new location:") %>
+  <%= f.text_field :location %>
+  <%= label_tag(:datetime, "date") %>
+  <%= f.date_field :datetime %>
+  <%= f.submit %>
+<% end %>
