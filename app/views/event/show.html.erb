@@ -1,7 +1,8 @@
-<h1>list of events</h1>
-<p>this are the events of <%= current_user.name %></p>
+<h1>Event location: <%= @event.location %></h1>
+<h1>Event date: <%= @event.datetime %></h1>
+<h3> Attendees: </h3>
 <ul>
-  <% @event.each do |event| %>
-    <li><%= event.location %></li>
+  <% @users.each do |user| %>
+    <li><%= user.name %></li>
   <% end %>
 </ul>
