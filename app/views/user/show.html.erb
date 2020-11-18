@@ -10,11 +10,11 @@
 </ul>
 
 <h3>Events <%= @user.name %> is going to attend:</h3>
-<!-- <ul>
-  <% @events.each do |event| %>
+ <ul>
+  <% @user.attended_events.each do |event| %>
     <li>
       <%= event.location %>
       <%= event.datetime %>
     </li>
   <% end %>
-</ul> -->
+</ul> 

@@ -5,8 +5,6 @@ class UserController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @events = []
-    # @events = @user.events.all
   end
 
   def new
