@@ -1,12 +1,14 @@
 class SessionController < ApplicationController
 
   def new
-    @session = session[]
+    # @session = session[]
   end
 
   def create
-    # User.find_by(name: )
-    @session = session[]
+    user = User.find_by(name: params[:name])
+    session[:user_id] = user.id
+    redirect_to root_path
+
   end
 
   def destroy
