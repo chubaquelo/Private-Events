@@ -3,12 +3,15 @@ class Event < ApplicationRecord
   has_many :attendees
   has_many :users, through: :attendees
 
-  def self.past
-    Event.where("datetime <= Time.zone.now", {timenow: Time.zone.now})
-  end
+  scope :past, -> {where('datetime <= ?', Time.zone.now)}
+  scope :future, -> {where('datetime >= ?', Time.zone.now)}
 
-  def self.future
-    Event.where("datetime >= :timenow", {timenow: Time.zone.now})
-  end
+  # def self.past
+  #   Event.where("datetime <= Time.zone.now", {timenow: Time.zone.now})
+  # end
+
+  # def self.future
+  #   Event.where("datetime >= :timenow", {timenow: Time.zone.now})
+  # end
   
 end
