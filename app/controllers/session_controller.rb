@@ -8,7 +8,7 @@ class SessionController < ApplicationController
     user = User.find_by(name: params[:name])
     if user.is_a?(User)
       session[:user_id] = user.id
-      redirect_to root_path
+      redirect_to user_path(session[:user_id])
     else
       render :new
     end

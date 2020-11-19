@@ -1,35 +1,50 @@
 <h1>User Name is: <%= @user.name %></h1>
 <h3>Events <%= @user.name %> created:</h3>
-<ul>
+<div class='card-group'>
   <% @user.authored_events.each do |ue| %>
-    <li>
-      <%= ue.location %>
-      <%= ue.datetime %>
-    </li>
+  <div class="card">
+      <div class="card-body">
+        
+        <h4 class="card-title"><%= ue.location %></h4>
+        <p class="card-text"><%= ue.datetime %></p>
+
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
+
+
+
 
 <h3><%= @user.name %>'s previous attended events:</h3>
- <ul>
+<div class='card-group'>
   <% @user.attended_events.each do |event| %>
     <% if event.datetime < Time.zone.now %>
-      <li>
-        <%= event.location %>
-        <%= event.datetime %>
-      </li>
+      <div class="card">
+          <div class="card-body">
+            
+            <h4 class="card-title"><%= event.location %></h4>
+            <p class="card-text"><%= event.datetime %></p>
+
+          </div>
+      </div>
     <% end %>
   <% end %>
-</ul> 
+</div>
 
 
 <h3><%= @user.name %>'s next events:</h3>
- <ul>
+<div class='card-group'>
   <% @user.attended_events.each do |event| %>
     <% if event.datetime > Time.zone.now %>
-      <li>
-        <%= event.location %>
-        <%= event.datetime %>
-      </li>
+      <div class="card">
+          <div class="card-body">
+            
+            <h4 class="card-title"><%= event.location %></h4>
+            <p class="card-text"><%= event.datetime %></p>
+
+          </div>
+      </div>
     <% end %>
   <% end %>
-</ul> 
+</div>
