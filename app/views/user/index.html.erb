@@ -1,5 +1,5 @@
 <% unless session[:user_id].nil? %>
-  <h1>Welcome <%= current_user.name %></h1>
+  <h1 class='text-danger'>Welcome <%= current_user.name %></h1>
 <% else %>
-  <h1> Not SIGNED IN </h1>
+  <h1 class='text-danger'> Welcome </h1>
 <% end %>
