@@ -12,7 +12,7 @@ class EventController < ApplicationController
   def create
     @event = current_user.authored_events.build(params.require(:event).permit(:location, :datetime))
     @event.save
-    redirect_to event_path(current_user.id)
+    redirect_to event_path(@event.id)
   end
 
   def show

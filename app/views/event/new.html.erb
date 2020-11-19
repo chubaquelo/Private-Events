@@ -1,7 +1,10 @@
-<%= form_with model: @event, url: event_index_path do |f| %>
-  <%= label_tag(:location, "Input a new location:") %>
-  <%= f.text_field :location %>
-  <%= label_tag(:datetime, "date") %>
-  <%= f.date_field :datetime %>
-  <%= f.submit %>
-<% end %>
+<div class="w-50 mx-auto mt-5 text-center">  
+  <h1>Create Event</h1>
+  <%= form_with model: @event, url: event_index_path do |f| %>
+    <%= label_tag(:location, "Location:") %></br>
+    <%= f.text_field :location %></br>
+    <%= label_tag(:datetime, "Date") %></br>
+    <%= f.date_field :datetime %></br></br>
+    <%= f.submit 'Create Event', class: 'btn btn-success' %>
+  <% end %>
+</div>

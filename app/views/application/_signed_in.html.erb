@@ -1,3 +1,3 @@
 <% if signed_in? %>
-  <p>SIGNED as <%= current_user.name %> </p>
+  <p>SIGNED as <%= link_to current_user.name, user_path(current_user.id) %> </p>
 <% end %>

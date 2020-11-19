@@ -1,50 +1,52 @@
-<h1>User Name is: <%= @user.name %></h1>
-<h3>Events <%= @user.name %> created:</h3>
-<div class='card-group'>
-  <% @user.authored_events.each do |ue| %>
-  <div class="card">
-      <div class="card-body">
-        
-        <h4 class="card-title"><%= ue.location %></h4>
-        <p class="card-text"><%= ue.datetime %></p>
+<div class="w-75 mx-auto mt-5">
 
-      </div>
-    </div>
-  <% end %>
-</div>
+  <h1 class="text-center"><%= @user.name %>'s Events</h1>
+  <h3>My created Events:</h3>
+  <div class='card-group'>
+    <% @user.authored_events.each do |ue| %>
+    <div class="card">
+        <div class="card-body">
+          
+          <h4 class="card-title"><%= ue.location %></h4>
+          <p class="card-text"><%= ue.datetime %></p>
+          <%= link_to 'View Event', event_path(ue.id)%>
 
-
-
-
-<h3><%= @user.name %>'s previous attended events:</h3>
-<div class='card-group'>
-  <% @user.attended_events.each do |event| %>
-    <% if event.datetime < Time.zone.now %>
-      <div class="card">
-          <div class="card-body">
-            
-            <h4 class="card-title"><%= event.location %></h4>
-            <p class="card-text"><%= event.datetime %></p>
-
-          </div>
+        </div>
       </div>
     <% end %>
-  <% end %>
-</div>
+  </div>
 
+  <h3 class="mt-4">My next events:</h3>
+  <div class='card-group'>
+    <% @user.attended_events.each do |event| %>
+      <% if event.datetime > Time.zone.now %>
+        <div class="card">
+            <div class="card-body">
+              
+              <h4 class="card-title"><%= event.location %></h4>
+              <p class="card-text"><%= event.datetime %></p>
+              <%= link_to 'View Event', event_path(event.id)%>
 
-<h3><%= @user.name %>'s next events:</h3>
-<div class='card-group'>
-  <% @user.attended_events.each do |event| %>
-    <% if event.datetime > Time.zone.now %>
-      <div class="card">
-          <div class="card-body">
-            
-            <h4 class="card-title"><%= event.location %></h4>
-            <p class="card-text"><%= event.datetime %></p>
-
-          </div>
-      </div>
+            </div>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
+
+  <h3 class="mt-4 text-muted">My Past events:</h3>
+  <div class='card-group text-muted'>
+    <% @user.attended_events.each do |event| %>
+      <% if event.datetime < Time.zone.now %>
+        <div class="card">
+            <div class="card-body">
+              
+              <h4 class="card-title"><%= event.location %></h4>
+              <p class="card-text"><%= event.datetime %></p>
+              <%= link_to 'View Event', event_path(event.id), class:"text-muted"%>
+
+            </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>

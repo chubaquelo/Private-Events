@@ -18,8 +18,13 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+          <% if signed_in? %> 
           <li class="nav-item active">
-            <%= link_to 'Events', event_index_path, class: 'nav-link' %>
+            <%= link_to 'My Events', user_path(current_user.id), class: 'nav-link' %>
+          </li>
+          <% end %>
+          <li class="nav-item active">
+            <%= link_to 'All Events', event_index_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
           <% if signed_in? %> 
@@ -33,6 +38,11 @@
             <%= link_to 'Sign Up', new_user_path, class: 'nav-link' %>
           <% end %>
           </li>
+          <% if signed_in? %> 
+          <li class="nav-item active">
+            <%= button_to 'New Event', new_event_path, method: :get, class: 'btn btn-success' %>
+          </li>
+          <% end %>
         </ul>
         <div class="my-2 my-lg-0">
           <%= render 'signed_in' %>
