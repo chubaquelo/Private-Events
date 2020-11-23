@@ -3,10 +3,11 @@ require 'rails_helper'
 RSpec.describe Event, type: :model do
   describe 'Create an Event' do
 
-    subject { Event.create( location: 'los angeles', datetime: '2020-11-23', author_id: 3)}
+    let(:user) { User.create(name:'joaquin') }
+    subject { t = Event.create( location: 'los angeles', datetime: '2020-11-23', author_id: user.id)}
 
-    it 'change the count of events by one' do
 
+    it "change the count of events by one" do
       expect{ subject }.to change{ Event.count }.by(1)
     end
 
