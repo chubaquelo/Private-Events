@@ -4,7 +4,7 @@ RSpec.describe Event, type: :model do
   describe 'Create an Event' do
 
     let(:user) { User.create(name:'joaquin') }
-    subject { t = Event.create( location: 'los angeles', datetime: '2020-11-23', author_id: user.id)}
+    subject { Event.create( location: 'los angeles', datetime: '2020-11-23', author_id: user.id)}
 
 
     it "change the count of events by one" do
@@ -16,18 +16,18 @@ RSpec.describe Event, type: :model do
     end
 
     it 'have many users' do
-      e = Event.reflect_on_association(:users)
-      expect(e.macro).to eq(:has_many)
+      event = Event.reflect_on_association(:users)
+      expect(event.macro).to eq(:has_many)
     end
 
     it 'belong to author' do
-      e = Event.reflect_on_association(:author)
-      expect(e.macro).to eq(:belongs_to)
+      event = Event.reflect_on_association(:author)
+      expect(event.macro).to eq(:belongs_to)
     end
 
     it 'have many attendees' do
-      e = Event.reflect_on_association(:attendees)
-      expect(e.macro).to eq(:has_many)
+      event = Event.reflect_on_association(:attendees)
+      expect(event.macro).to eq(:has_many)
     end
   end
 end

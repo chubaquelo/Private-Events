@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe 'Create a user' do
+    
     subject {User.create(name: 'carlos')}
 
     it 'change the count of users by one' do
@@ -13,23 +14,23 @@ RSpec.describe User, type: :model do
     end
 
     it 'have many attended_events' do
-      u = User.reflect_on_association(:attended_events)
-      expect(u.macro).to eq(:has_many)
+      user = User.reflect_on_association(:attended_events)
+      expect(user.macro).to eq(:has_many)
     end
 
     it 'have many authored_events' do
-      u = User.reflect_on_association(:authored_events)
-      expect(u.macro).to eq(:has_many)
+      user = User.reflect_on_association(:authored_events)
+      expect(user.macro).to eq(:has_many)
     end
 
     it 'have many authored_events' do
-      u = User.reflect_on_association(:authored_events)
-      expect(u.macro).to eq(:has_many)
+      user = User.reflect_on_association(:authored_events)
+      expect(user.macro).to eq(:has_many)
     end
 
     it 'have many attendees' do
-      u = User.reflect_on_association(:attendees)
-      expect(u.macro).to eq(:has_many)
+      user = User.reflect_on_association(:attendees)
+      expect(user.macro).to eq(:has_many)
     end
   end
 end
