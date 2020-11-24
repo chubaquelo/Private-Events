@@ -1,0 +1,5 @@
+<%= form_with model: @attendee, method: :delete, url: attendee_path do |f| %>
+  <%= f.hidden_field :user_id, :value => current_user[:id] %>
+  <%= f.hidden_field :event_id, :value => params[:id] %> 
+  <%= f.submit 'I will not assist', class: 'btn btn-danger' %><br>
+<% end %>

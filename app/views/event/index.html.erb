@@ -3,24 +3,12 @@
   <h1>This are all the events</h1>
 
   <h3 class="mt-5">Next events:</h3>
-  <ul>
-    <% @events_future.each do |event| %>
-        <li style="list-style: none;">
-          <%= event.location %>
-          <%= event.datetime %>
-          <%= link_to 'View Event', event_path(event.id)%>
-        </li>
-    <% end %>
+  <ul class="p-0">
+    <% list_events(@events_future) %>
   </ul> 
   
   <h3 class="mt-5">Past events:</h3>
-  <ul>
-    <% @events_past.each do |event| %>
-        <li style="list-style: none;">
-          <%= event.location %>
-          <%= event.datetime %>
-          <%= link_to 'View Event', event_path(event.id)%>
-        </li>
-    <% end %>
+  <ul class="p-0">
+    <% list_events(@events_past) %>
   </ul> 
 </div>

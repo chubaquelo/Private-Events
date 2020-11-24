@@ -2,28 +2,11 @@
   <h1>Location: <%= @event.location %></h1>
   <h1>Date: <%= @event.datetime %></h1>
   <h3> Attendees: </h3>
-  <% if @users.empty? %>
-    <p class="text-danger">There are no confirmed attendees yet.</p>
-  <% else %>
-    <ul style="list-style: none;">
-      <% @users.each do |user| %>
-        <li><%= user.name %></li>
-      <% end %>
-    </ul>
-  <% end %>
+  <ul style="list-style: none;" class="p-0">
+    <% show_attendees(@users) %>
+  </ul>
 
-  <% if signed_in? && !check_assistance(current_user[:id], params[:id]) %>
-    <%= form_with model: @attendee, method: :post, url: attendee_index_path do |f| %>
-      <%= f.hidden_field :user_id, :value => current_user[:id] %>
-      <%= f.hidden_field :event_id, :value => params[:id] %> 
-      <%= f.submit 'I will assist', class: 'btn btn-success' %><br>
-    <% end %>
-  <% elsif signed_in? && check_assistance(current_user[:id], params[:id])%>
-    <%= form_with model: @attendee, method: :delete, url: attendee_path do |f| %>
-      <%= f.hidden_field :user_id, :value => current_user[:id] %>
-      <%= f.hidden_field :event_id, :value => params[:id] %> 
-      <%= f.submit 'I will not assist', class: 'btn btn-danger' %><br>
-    <% end %>
-  <% end %>
+  <% assistance_btn(params[:id]) %><br>
+
   <%= link_to 'Back to Events list', event_index_path %>
 </div>]
