@@ -1,19 +1,19 @@
 module ApplicationHelper
   def all_my_events(event)
-    event.each do |event|
-      concat my_events(event)
+    event.each do |ev|
+      concat my_events(ev)
     end
   end
 
   def my_future_events(event)
-    event.each do |event|
-      concat my_events(event) if event.datetime > Time.zone.now
+    event.each do |ev|
+      concat my_events(ev) if ev.datetime > Time.zone.now
     end
   end
 
   def my_past_events(event)
-    event.each do |event|
-      concat my_events(event) if event.datetime < Time.zone.now
+    event.each do |ev|
+      concat my_events(ev) if ev.datetime < Time.zone.now
     end
   end
 
@@ -37,7 +37,7 @@ module ApplicationHelper
 
   def list_events(events)
     events.each do |event|
-      concat content_tag(:li, 'Location: ' + event.location + ' | ' + 'Date: ' + event.datetime.to_s, style: 'list-style: none;')
+      concat content_tag(:li, "Location: #{event.location} | Date: #{event.datetime.to_s}", style: 'list-style: none;')
       concat content_tag(:a, link_to('View Event', event_path(event.id)))
       concat content_tag(:hr)
     end
