@@ -37,18 +37,20 @@ module ApplicationHelper
 
   def list_events(events)
     events.each do |event|
-      concat content_tag(:li, "Location: #{event.location} | Date: #{event.datetime.to_s}", style: 'list-style: none;')
+      concat content_tag(:li, "Location: #{event.location} | Date: #{event.datetime}", style: 'list-style: none;')
       concat content_tag(:a, link_to('View Event', event_path(event.id)))
       concat content_tag(:hr)
     end
   end
 
   def my_events(event)
-    content_tag(:div, content_tag(:div, nested_div(event), class: 'card w-100 mb-3'), class: 'col-sm-3 d-flex align-items-stretch')
+    content_tag(:div, content_tag(:div, nested_div(event), class: 'card w-100 mb-3'),
+                class: 'col-sm-3 d-flex align-items-stretch')
   end
 
   def nested_div(event)
-    content_tag(:div, content_for_nested(event), class: 'card-body')
+    content_tag(:div, content_for_nested(event),
+                class: 'card-body')
   end
 
   def content_for_nested(event)
