@@ -2,49 +2,55 @@
 
   <h1 class="text-center"><%= @user.name %>'s Events</h1>
   <h3>My created Events:</h3>
-  <div class='card-group'>
+  <div class="row">
     <% @user.authored_events.each do |ue| %>
-    <div class="card">
-        <div class="card-body">
-          
-          <h4 class="card-title"><%= ue.location %></h4>
-          <p class="card-text"><%= ue.datetime %></p>
-          <%= link_to 'View Event', event_path(ue.id)%>
+      <div class="col-sm-3 d-flex align-items-stretch">
+        <div class="card w-100 mb-3">
+          <div class="card-body">
+            
+            <h4 class="card-title"><%= ue.location %></h4>
+            <p class="card-text"><%= ue.datetime %></p>
+            <%= link_to 'View Event', event_path(ue.id)%>
 
+          </div>
         </div>
       </div>
     <% end %>
   </div>
 
   <h3 class="mt-4">My next events:</h3>
-  <div class='card-group'>
+  <div class='row'>
     <% @user.attended_events.each do |event| %>
       <% if event.datetime > Time.zone.now %>
-        <div class="card">
-            <div class="card-body">
-              
-              <h4 class="card-title"><%= event.location %></h4>
-              <p class="card-text"><%= event.datetime %></p>
-              <%= link_to 'View Event', event_path(event.id)%>
+        <div class="col-sm-3 d-flex align-items-stretch">
+          <div class="card w-100 mb-3">
+              <div class="card-body">
+                
+                <h4 class="card-title"><%= event.location %></h4>
+                <p class="card-text"><%= event.datetime %></p>
+                <%= link_to 'View Event', event_path(event.id)%>
 
-            </div>
+              </div>
+          </div>
         </div>
       <% end %>
     <% end %>
   </div>
 
   <h3 class="mt-4 text-muted">My Past events:</h3>
-  <div class='card-group text-muted'>
+  <div class='row text-muted'>
     <% @user.attended_events.each do |event| %>
       <% if event.datetime < Time.zone.now %>
-        <div class="card">
-            <div class="card-body">
-              
-              <h4 class="card-title"><%= event.location %></h4>
-              <p class="card-text"><%= event.datetime %></p>
-              <%= link_to 'View Event', event_path(event.id), class:"text-muted"%>
+        <div class="col-sm-3 d-flex align-items-stretch">
+          <div class="card w-100 mb-3">
+              <div class="card-body">
+                
+                <h4 class="card-title"><%= event.location %></h4>
+                <p class="card-text"><%= event.datetime %></p>
+                <%= link_to 'View Event', event_path(event.id), class:"text-muted"%>
 
-            </div>
+              </div>
+          </div>
         </div>
       <% end %>
     <% end %>
