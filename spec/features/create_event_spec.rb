@@ -8,7 +8,7 @@ RSpec.describe 'creating a new event', type: :feature do
     click_on 'Save'
     expect(page).to have_content("SIGNED as #{user.name}")
     visit new_event_path
-    fill_in 'event_location', with: 'argentina' 
+    fill_in 'event_location', with: 'argentina'
     fill_in 'event_datetime', with: Time.now + 10.days
     click_on 'Create Event'
     expect(page).not_to have_content('Location: peru')
@@ -20,7 +20,7 @@ RSpec.describe 'creating a new event', type: :feature do
     click_on 'Save'
     expect(page).to have_content("SIGNED as #{user.name}")
     visit new_event_path
-    fill_in 'event_location', with: 'argentina' 
+    fill_in 'event_location', with: 'argentina'
     fill_in 'event_datetime', with: Time.now + 10.days
     click_on 'Create Event'
     expect(page).to have_content('Location: argentina')
