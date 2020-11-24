@@ -1,5 +1,4 @@
 class SessionController < ApplicationController
-
   def new
     # @session = session[]
   end

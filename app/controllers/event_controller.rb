@@ -1,5 +1,4 @@
 class EventController < ApplicationController
-
   def index
     @events_past = Event.past.order('datetime DESC')
     @events_future = Event.future.order('datetime ASC')
@@ -21,5 +20,4 @@ class EventController < ApplicationController
     @attendee = Attendee.new
     # @event = Event.find(current_user.id)
   end
-
 end

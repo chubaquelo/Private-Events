@@ -2,11 +2,10 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe 'Create a user' do
-    
-    subject {User.create(name: 'carlos')}
+    subject { User.create(name: 'carlos') }
 
     it 'change the count of users by one' do
-      expect{ subject }.to change{ User.count }.by(1)
+      expect { subject }.to change { User.count }.by(1)
     end
 
     it 'return carlos' do
