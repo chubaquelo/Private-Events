@@ -12,5 +12,18 @@
     </ul>
   <% end %>
 
+  <% if signed_in? && !check_assistance(current_user[:id], params[:id]) %>
+    <%= form_with model: @attendee, method: :post, url: attendee_index_path do |f| %>
+      <%= f.hidden_field :user_id, :value => current_user[:id] %>
+      <%= f.hidden_field :event_id, :value => params[:id] %> 
+      <%= f.submit 'I will assist', class: 'btn btn-success' %><br>
+    <% end %>
+  <% elsif signed_in? && check_assistance(current_user[:id], params[:id])%>
+    <%= form_with model: @attendee, method: :delete, url: attendee_path do |f| %>
+      <%= f.hidden_field :user_id, :value => current_user[:id] %>
+      <%= f.hidden_field :event_id, :value => params[:id] %> 
+      <%= f.submit 'I will not assist', class: 'btn btn-danger' %><br>
+    <% end %>
+  <% end %>
   <%= link_to 'Back to Events list', event_index_path %>
-</div>
+</div>]

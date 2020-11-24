@@ -18,6 +18,7 @@ class EventController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @users = @event.users
+    @attendee = Attendee.new
     # @event = Event.find(current_user.id)
   end
 
