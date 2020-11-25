@@ -1,0 +1,5 @@
+<%= form_with model: @user, url: user_index_path do |f| %>
+  <%= label_tag(:name, "Input a new user name:") %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>

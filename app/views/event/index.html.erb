@@ -1,0 +1,14 @@
+<div class="w-50 mx-auto text-center mt-5">
+
+  <h1>This are all the events</h1>
+
+  <h3 class="mt-5">Next events:</h3>
+  <ul class="p-0">
+    <% list_events(@events_future) %>
+  </ul> 
+  
+  <h3 class="mt-5">Past events:</h3>
+  <ul class="p-0">
+    <% list_events(@events_past) %>
+  </ul> 
+</div>

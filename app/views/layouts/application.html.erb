@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PrivateEvents</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <%= link_to 'Private Events', root_path, class: 'navbar-brand' %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <% if signed_in? %> 
+          <li class="nav-item active">
+            <%= link_to 'My Events', user_path(current_user.id), class: 'nav-link' %>
+          </li>
+          <% end %>
+          <li class="nav-item active">
+            <%= link_to 'All Events', event_index_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+          <% if signed_in? %> 
+            <%= link_to 'Sign Out', session_path(current_user.id), method: :delete, class: 'nav-link' %>
+          <% else %>
+            <%= link_to 'Sign In', new_session_path, class: 'nav-link' %>
+          <% end %>
+          </li>
+          <li class="nav-item">
+          <% unless signed_in? %> 
+            <%= link_to 'Sign Up', new_user_path, class: 'nav-link' %>
+          <% end %>
+          </li>
+          <% if signed_in? %> 
+          <li class="nav-item active">
+            <%= button_to 'New Event', new_event_path, method: :get, class: 'btn btn-success' %>
+          </li>
+          <% end %>
+        </ul>
+        <div class="my-2 my-lg-0">
+          <%= render 'signed_in' %>
+        </div>
+      </div>
+    </nav>
+    
+    <%= yield %>
+  </body>
+</html>

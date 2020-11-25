@@ -1,0 +1,12 @@
+ <div class="w-50 mx-auto mt-5 text-center">
+  <h1>Location: <%= @event.location %></h1>
+  <h1>Date: <%= @event.datetime %></h1>
+  <h3> Attendees: </h3>
+  <ul style="list-style: none;" class="p-0">
+    <% show_attendees(@users) %>
+  </ul>
+
+  <% assistance_btn(params[:id]) %><br>
+
+  <%= link_to 'Back to Events list', event_index_path %>
+</div>
