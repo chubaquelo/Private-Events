@@ -17,7 +17,7 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto col-8">
           <% if signed_in? %> 
           <li class="nav-item active">
             <%= link_to 'My Events', user_path(current_user.id), class: 'nav-link' %>
@@ -44,7 +44,7 @@
           </li>
           <% end %>
         </ul>
-        <div class="my-2 my-lg-0">
+        <div class="my-2 my-lg-0 col-4">
           <%= render 'signed_in' %>
         </div>
       </div>
