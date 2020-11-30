@@ -7,9 +7,10 @@ class SessionController < ApplicationController
     user = User.find_by(name: params[:name])
     if user.is_a?(User)
       session[:user_id] = user.id
-      redirect_to user_path(session[:user_id])
+      redirect_to root_path
     else
-      render :new
+      flash[:alert] = 'User was not found.'
+      redirect_to new_session_path
     end
   end
 
