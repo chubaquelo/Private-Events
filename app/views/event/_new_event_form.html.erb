@@ -1,7 +1,7 @@
 <%= form_with model: @event, url: event_index_path do |f| %>
-  <%= label_tag(:location, "Location:") %></br>
-  <%= f.text_field :location %></br>
-  <%= label_tag(:datetime, "Date") %></br>
-  <%= f.date_field :datetime %></br></br>
+  <%= label_tag(:location, "Location:", class: 'lead') %></br>
+  <%= f.text_field :location, class: "form-control mx-auto w-25 border border-dark" %></br>
+  <%= label_tag(:datetime, "Date", class: 'lead') %></br>
+  <%= f.datetime_field :datetime, class: "form-control mx-auto w-25 border border-dark" %></br></br>
   <%= f.submit 'Create Event', class: 'btn btn-success' %>
 <% end %>

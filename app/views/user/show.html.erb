@@ -1,17 +1,17 @@
 <div class="w-75 mx-auto mt-5">
 
-  <h1 class="text-center"><%= @user.name %>'s Events</h1>
-  <h3>My created Events:</h3>
+  <h1 class="text-center display-4">Your events, <%= @user.name %></h1>
+  <h3>Created Events:</h3>
   <div class="row">
     <% all_my_events(@user.authored_events) %>
   </div>
 
-  <h3 class="mt-4">My next events:</h3>
+  <h3 class="mt-4">Next events (will assist):</h3>
   <div class='row'>
   <% my_future_events(@user.attended_events) %>
   </div>
 
-  <h3 class="mt-4 text-muted">My Past events:</h3>
+  <h3 class="mt-4 text-muted">Past events (assisted):</h3>
   <div class='row text-muted'>
     <% my_past_events(@user.attended_events) %>
   </div>

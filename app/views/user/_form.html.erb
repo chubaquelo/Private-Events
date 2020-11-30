@@ -1,5 +1,5 @@
 <%= form_with model: @user, url: user_index_path do |f| %>
-  <%= label_tag(:name, "Input a new user name:") %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
+  <%= label_tag(:name, "Input a new user name:", class: 'lead') %><br>
+  <%= f.text_field :name, class: "mb-4 form-control mx-auto w-25 border border-dark" %><br>
+  <%= f.submit 'Create User', class: "btn btn-warning" %>
 <% end %>

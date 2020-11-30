@@ -55,7 +55,7 @@ module ApplicationHelper
 
   def content_for_nested(event)
     content_tag(:h4, event.location, class: 'card-title') +
-      content_tag(:p, event.datetime, class: 'card-title') +
+      content_tag(:p, event.datetime.strftime("On %m/%d/%Y, at %I:%M%p"), class: 'card-title') +
       (link_to 'View event', event_path(event.id))
   end
 end
