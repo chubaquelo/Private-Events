@@ -5,9 +5,9 @@
     <h2><span class="font-weight-light small">Date:</span><br> <%= @event.datetime.strftime("On %m/%d/%Y, at %I:%M%p") %></h1><br>
   </div>
   <h3> Attendees: </h3>
-  <ul style="list-style: none;" class="p-0">
-    <% show_attendees(@users) %>
-  </ul>
+    <ul class="list-group w-25 mx-auto mb-4 mt-4">
+      <% show_attendees(@users) %>
+    </ul>
 
   <% assistance_btn(params[:id]) %><br>
 

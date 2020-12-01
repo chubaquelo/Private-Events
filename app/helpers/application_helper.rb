@@ -19,10 +19,10 @@ module ApplicationHelper
 
   def show_attendees(users)
     if users.empty?
-      concat content_tag(:p, 'There are no confirmed attendees yet.', class: 'text-danger')
+      concat content_tag(:p, 'There are no confirmed attendees yet.', class: 'text-danger mt-4')
     else
       users.each do |user|
-        concat content_tag(:li, user.name, class: 'list-style: none;')
+        concat content_tag(:li, user.name, class: 'list-group-item font-weight-bold font-italic')
       end
     end
   end
