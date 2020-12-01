@@ -54,29 +54,24 @@ module ApplicationHelper
       concat content_tag(:li, "Location: #{event.location}", style: 'list-style: none;')
       concat content_tag(:li, "Date: #{event.datetime.strftime('On %m/%d/%Y, at %I:%M%p')}", style: 'list-style: none;')
       concat content_tag(:p, "#{event.attendees.count} attendees", class: 'small text-muted')
-      concat content_tag(:a, link_to('View Attendees', event_path(event.id), class: 'badge badge-primary')) +
-             (unless check_assistance(current_user[:id], event)
-                (link_to 'Assist', attendee_index_path(attendee: { user_id: current_user.id, event_id: event.id }),
-                         method: :post, class: 'badge badge-success ml-2')
-              end) +
-             (if check_assistance(current_user[:id], event)
-                (link_to 'Unassist', attendee_path(id: event,
-                                                   attendee: { user_id: current_user.id, event_id: event.id }),
-                         method: :delete, class: 'badge badge-warning ml-2')
-              end)
+      if signed_in?
+        concat content_tag(:a, link_to('View Attendees', event_path(event.id), class: 'badge badge-primary')) +
+              (unless check_assistance(current_user[:id], event)
+                  (link_to 'Assist', attendee_index_path(attendee: { user_id: current_user.id, event_id: event.id }),
+                          method: :post, class: 'badge badge-success ml-2')
+                end) +
+              (if check_assistance(current_user[:id], event)
+                  (link_to 'Unassist', attendee_path(id: event,
+                                                    attendee: { user_id: current_user.id, event_id: event.id }),
+                          method: :delete, class: 'badge badge-warning ml-2')
+                end)
+        end
       concat content_tag(:span, '  ')
       if event.author == current_user && !current_user.nil?
         concat content_tag(:a, link_to('Delete', event_path(event.id), method: :delete,
                                                                        data: { confirm: 'Are you sure?' },
                                                                        class: 'badge badge-danger'))
       end
-      # if signed_in? && check_assistance(current_user[:id], event)
-      #   concat content_tag(:span, '  ')
-      #   concat render 'unassist_btn'
-      # elsif signed_in? && !check_assistance(current_user[:id], event)
-      #   concat content_tag(:span, '  ')
-      #   concat render 'assist_btn'
-      # end
       concat content_tag(:hr)
     end
   end
