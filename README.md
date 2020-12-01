@@ -4,7 +4,7 @@
 
 > In this project we built an Events application with a very simple sign up functionality. You can sign up with just your name and then create events, and confirm assistance to them.
 
-![alt text](https://i.imgur.com/VbX1R86.jpg "Preview Img")
+![alt text](https://i.imgur.com/vIQ1eCx.jpg "Preview Img")
 
 ## Built With
 
