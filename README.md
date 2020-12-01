@@ -14,6 +14,9 @@
 - Rspec for Integration Testing
 - Bootstrap for UI
 
+## Live Demo
+- [Live Demo](https://salty-tundra-56222.herokuapp.com)
+
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
