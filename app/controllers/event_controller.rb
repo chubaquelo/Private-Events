@@ -1,5 +1,4 @@
 class EventController < ApplicationController
-
   def index
     @events_past = Event.past.order('datetime DESC')
     @events_future = Event.future.order('datetime ASC')
@@ -29,10 +28,10 @@ class EventController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     if @event.author == current_user && @event.destroy
-      flash[:success] = "Event deleted successfully"
+      flash[:success] = 'Event deleted successfully'
       redirect_to user_path(current_user)
     else
-      flash[:danger] = "Event not destroyed"
+      flash[:danger] = 'Event not destroyed'
       redirect_to event_path
     end
   end
@@ -42,5 +41,4 @@ class EventController < ApplicationController
   def event_params
     params.require(:event).permit(:location, :datetime)
   end
-
 end
