@@ -76,6 +76,9 @@ GEM
     concurrent-ruby (1.1.7)
     crass (1.0.6)
     database_cleaner (1.8.5)
+    date_validator (0.10.0)
+      activemodel (>= 3)
+      activesupport (>= 3)
     diff-lcs (1.4.4)
     erubi (1.10.0)
     ffi (1.13.1)
@@ -237,6 +240,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   database_cleaner
+  date_validator (~> 0.10.0)
   jbuilder (~> 2.7)
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
