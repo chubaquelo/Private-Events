@@ -1,14 +1,19 @@
-<div class="w-50 mx-auto text-center mt-5">
+<div class="w-75 mx-auto text-center mt-4">
 
-  <h1>This are all the events</h1>
+  <h1 class="display-4">This are all the events</h1>
 
-  <h3 class="mt-5">Next events:</h3>
-  <ul class="p-0">
-    <% list_events(@events_future) %>
-  </ul> 
-  
-  <h3 class="mt-5">Past events:</h3>
-  <ul class="p-0">
-    <% list_events(@events_past) %>
-  </ul> 
+  <div class="row">
+    <div class="col-4">
+    <h2 class="my-4"><span class="badge badge-secondary">Past events:</span></h3>
+    <ul class="p-0 text-muted">
+      <% list_events(@events_past) %>
+    </ul> 
+    </div>
+    <div class="col-8">
+    <h2 class="my-4"><span class="badge badge-secondary">Future events:</span></h3>
+    <ul class="p-0 font-weight-bold">
+      <% list_events(@events_future) %>
+    </ul>
+    </div>
+  </div>
 </div>

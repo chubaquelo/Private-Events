@@ -1,6 +1,9 @@
  <div class="w-50 mx-auto mt-5 text-center">
-  <h1>Location: <%= @event.location %></h1>
-  <h1>Date: <%= @event.datetime %></h1>
+  <h1 class="display-4">Event details</h1><br>
+  <div class="text-center w-75 mx-auto">
+    <h2><span class="font-weight-light small">Location:</span><br> <%= @event.location %></h1>
+    <h2><span class="font-weight-light small">Date:</span><br> <%= @event.datetime.strftime("On %m/%d/%Y, at %I:%M%p") %></h1><br>
+  </div>
   <h3> Attendees: </h3>
   <ul style="list-style: none;" class="p-0">
     <% show_attendees(@users) %>

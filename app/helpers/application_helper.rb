@@ -37,8 +37,21 @@ module ApplicationHelper
 
   def list_events(events)
     events.each do |event|
-      concat content_tag(:li, "Location: #{event.location} | Date: #{event.datetime}", style: 'list-style: none;')
-      concat content_tag(:a, link_to('View Event', event_path(event.id)))
+      concat content_tag(:li, "Location: #{event.location}", style: 'list-style: none;')
+      concat content_tag(:li, "Date: #{event.datetime.strftime("On %m/%d/%Y, at %I:%M%p")}", style: 'list-style: none;')
+      concat content_tag(:p, "#{event.attendees.count} attendees" , class: 'small text-muted')
+      concat content_tag(:a, link_to('View Attendees', event_path(event.id), class: 'badge badge-primary'))
+      concat content_tag(:span, '  ')
+      if event.author == current_user
+        concat content_tag(:a, link_to('Delete', event_path(event.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'badge badge-danger')) unless current_user.nil?
+      end
+      # if signed_in? && check_assistance(current_user[:id], event)
+      #   concat content_tag(:span, '  ')
+      #   concat render 'unassist_btn'
+      # elsif signed_in? && !check_assistance(current_user[:id], event)
+      #   concat content_tag(:span, '  ')
+      #   concat render 'assist_btn'
+      # end
       concat content_tag(:hr)
     end
   end
@@ -54,8 +67,10 @@ module ApplicationHelper
   end
 
   def content_for_nested(event)
-    content_tag(:h4, event.location, class: 'card-title') +
+    content_tag(:h4, "<span class='small'>Location:</span> #{event.location}".html_safe, class: 'card-title') +
       content_tag(:p, event.datetime.strftime("On %m/%d/%Y, at %I:%M%p"), class: 'card-title') +
-      (link_to 'View event', event_path(event.id))
+        content_tag(:p, "#{event.attendees.count} attendees" , class: 'small text-muted') +
+        (link_to 'View event', event_path(event.id), class: 'badge badge-primary') + '  ' +
+        (link_to 'Delete', event_path(event.id), method: :delete, class: 'badge badge-danger')
   end
 end

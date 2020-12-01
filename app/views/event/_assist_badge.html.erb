@@ -1,0 +1,5 @@
+<%= form_with model: @attendee, method: :post, url: attendee_index_path do |f| %>
+  <%= f.hidden_field :user_id, :value => current_user[:id] %>
+  <%= f.hidden_field :event_id, :value => params[:id] %> 
+  <%= f.submit 'I will assist', class: 'btn btn-success' %><br>
+<% end %>

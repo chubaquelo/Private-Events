@@ -1,6 +1,6 @@
 <div class="w-75 mx-auto mt-5">
 
-  <h1 class="text-center display-4">Your events, <%= @user.name %></h1>
+  <h1 class="text-center display-4 mb-4">Your events, <%= @user.name %></h1>
   <h3>Created Events:</h3>
   <div class="row">
     <% all_my_events(@user.authored_events) %>

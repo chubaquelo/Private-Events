@@ -1,7 +1,7 @@
 <div class="text-center w-50 mx-auto mt-5">
 <% if signed_in? %>
   <h1 class='display-4 mb-3'>Welcome <%= current_user.name %>!</h1>
-  <p class="mb-4">What you wanna do?</p>
+  <p class="mb-4 lead">What you wanna do?</p>
   <%= button_to 'Create a New Event', new_event_path, method: :get, class: 'btn btn-success' %></br>
   <div class="row">
     <div class="col-2 ml-auto">

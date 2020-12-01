@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
 
   def check_assistance(user, event)
     return true if Attendee.where(user_id: user, event_id: event).any?
-
     false
   end
 end
