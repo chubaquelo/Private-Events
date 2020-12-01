@@ -11,5 +11,6 @@
 
   <% assistance_btn(params[:id]) %><br>
 
-  <%= link_to 'Back to Events list', event_index_path %>
+  <%= link_to 'Back to Events list', event_index_path %> <br>
+  <%= link_to 'Back to My Events', user_path(current_user) %>
 </div>

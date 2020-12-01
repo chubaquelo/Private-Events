@@ -1,19 +1,33 @@
 module ApplicationHelper
   def all_my_events(event)
-    event.each do |ev|
-      concat my_events(ev)
+    unless event.empty?
+      event.each do |ev|
+        concat my_events(ev)
+      end
+    else
+      concat content_tag(:p, "You didn't create any event yet. ", class: 'text-danger ml-5 mr-2')
+      concat content_tag(:a, link_to("Create a new event now.", new_event_path))
     end
   end
 
   def my_future_events(event)
-    event.each do |ev|
-      concat my_events(ev) if ev.datetime > Time.zone.now
+    unless event.empty?
+      event.each do |ev|
+        concat my_events(ev) if ev.datetime > Time.zone.now
+      end
+    else
+      concat content_tag(:p, "You won't assist to any event yet.", class: 'text-danger ml-5 mr-2')
+      concat content_tag(:a, link_to("Check the events list here.", event_index_path))
     end
   end
 
   def my_past_events(event)
-    event.each do |ev|
-      concat my_events(ev) if ev.datetime < Time.zone.now
+    unless event.empty?
+      event.each do |ev|
+        concat my_events(ev) if ev.datetime < Time.zone.now
+      end
+    else
+      concat content_tag(:p, "You didn't assisted to any event yet.", class: 'text-danger ml-5')
     end
   end
 
