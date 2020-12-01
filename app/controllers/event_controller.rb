@@ -3,7 +3,6 @@ class EventController < ApplicationController
   def index
     @events_past = Event.past.order('datetime DESC')
     @events_future = Event.future.order('datetime ASC')
-    @attendee = Attendee.new
   end
 
   def new
