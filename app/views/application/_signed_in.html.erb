@@ -1,3 +1,7 @@
 <% if signed_in? %>
-  <p>SIGNED as <%= link_to current_user.name, user_path(current_user.id) %> </p>
+  <div class="row text-right">
+    <div class="col-12">
+      <p class="mt-2">Logged as <%= link_to current_user.name, user_path(current_user.id) %>. <%= link_to 'Log out', session_path(current_user), method: :delete, class: 'badge badge-danger' %></p>
+    </div>
+  </div>
 <% end %>

@@ -1,14 +1,21 @@
-<div class="text-center w-25 mx-auto mt-5">
+<div class="text-center w-50 mx-auto mt-5">
 <% if signed_in? %>
-  <h1 class='text-danger mb-3'>Welcome <%= current_user.name %>!</h1>
-  <p class="mb-4">What you wanna do?</p>
+  <h1 class='display-4 mb-3'>Welcome <%= current_user.name %>!</h1>
+  <p class="mb-4 lead">What you wanna do?</p>
   <%= button_to 'Create a New Event', new_event_path, method: :get, class: 'btn btn-success' %></br>
-  <%= button_to 'See my events', user_path(current_user.id), method: :get, class: 'btn btn-dark' %></br>
-  <%= button_to 'See all events', event_index_path, method: :get, class: 'btn btn-dark' %>
+  <div class="row">
+    <div class="col-2 ml-auto">
+      <%= button_to 'My events', user_path(current_user.id), method: :get, class: 'btn btn-info' %>
+    </div>
+    <div class="col-2 mr-auto">
+      <%= button_to 'All events', event_index_path, method: :get, class: 'btn btn-info' %></br>
+    </div>
+  </div>
+  <%= button_to 'Sign Out ', session_path(current_user), method: :delete, class: 'btn btn-danger' %>
 <% else %>
-  <h1 class='text-danger'>Welcome</h1>
-  <p>Sign in to see the options</p>
-  <%= button_to 'Sign In', new_session_path, method: :get, class: 'btn btn-dark' %></br>
-  <%= button_to 'Register', new_user_path, method: :get, class: 'btn btn-dark' %>
+  <h1 class='display-4'>Welcome</h1>
+    <p class='lead'>Sign in to see the options</p>
+    <%= button_to 'Sign In', new_session_path, method: :get, class: 'btn btn-success' %></br>
+    <%= button_to 'Register', new_user_path, method: :get, class: 'btn btn-warning' %>
 <% end %>
 </div>

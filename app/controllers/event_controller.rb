@@ -10,14 +10,30 @@ class EventController < ApplicationController
 
   def create
     @event = current_user.authored_events.build(event_params)
-    @event.save
-    redirect_to event_path(@event.id)
+    if @event.save
+      flash[:success] = 'Event was created succesfully.'
+      redirect_to event_path(@event.id)
+    else
+      flash[:danger] = 'Location must have more than 4 characters and date must be correct.'
+      redirect_to new_event_path
+    end
   end
 
   def show
     @event = Event.find(params[:id])
     @users = @event.users
     @attendee = Attendee.new
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    if @event.author == current_user && @event.destroy
+      flash[:success] = 'Event deleted successfully'
+      redirect_to user_path(current_user)
+    else
+      flash[:danger] = 'Event not destroyed'
+      redirect_to event_path
+    end
   end
 
   private

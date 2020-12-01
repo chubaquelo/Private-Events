@@ -6,11 +6,9 @@ class ApplicationController < ActionController::Base
                       User.find_by(id: session[:user_id])
   end
 
-  # rubocop:disable Style/DoubleNegation
   def signed_in?
     !!current_user
   end
-  # rubocop:enable Style/DoubleNegation
 
   def check_assistance(user, event)
     return true if Attendee.where(user_id: user, event_id: event).any?

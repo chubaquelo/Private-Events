@@ -15,7 +15,9 @@ class UserController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      render :new
+      flash[:danger] = 'User name must have at least 4 characters. Or name has already been taken. Try again.'
+      redirect_to new_user_path
+      # render :new
     end
   end
 
